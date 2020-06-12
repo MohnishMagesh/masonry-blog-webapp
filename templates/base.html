@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <!-- head -->
+    {% include "partials/_head.html" %}
+<body id="top">
+    <!-- header -->
+    {% include "partials/_header.html" %}
+
+    <!-- main-content -->
+    {% block content %}{% endblock content %}
+
+    <!-- footer -->
+    {% include "partials/_footer.html" %}
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'ourBlog/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'ourBlog/js/plugins.js' %}"></script>
+    <script src="{% static 'ourBlog/js/main.js' %}"></script>
+    
+</body>
+</html>
