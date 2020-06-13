@@ -11,6 +11,7 @@
 
                 <div class="grid-sizer"></div>
 
+                {% for obj in object_list %}
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
                         
                     <div class="entry__thumb">
@@ -18,7 +19,7 @@
                         <a href="#" class="entry__thumb-link">
                             <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/lamp-400.jpg' %}" 
                                     srcset="images/thumbs/masonry/lamp-400.jpg 1x, images/thumbs/masonry/lamp-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/lamp-400.jpg' %}" alt="">
+                            <img src="{{ obj.thumbnail.url}}" alt="">
                         </a>
                     </div>
     
@@ -27,443 +28,41 @@
                             
                             <div class="entry__date">
                                 <!-- single-standard.html -->
-                                <a href="#">December 15, 2017</a>
+                                <a href="#">{{ obj.timestamp|timesince }} ago</a>
                             </div>
                             <!-- single-standard.html -->
-                            <h1 class="entry__title"><a href="#">Just a Standard Format Post.</a></h1>
+                            <h1 class="entry__title"><a href="#">{{ obj.title }}</a></h1>
                             
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                {{ obj.snippet }}
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="#">Design</a> 
-                                <!-- category.html -->
-                                <a href="#">Photography</a>
+                                {% for category in obj.categories.all %}
+                                    <a href="#">{{ category }}</a> 
+                                {% endfor %}
                             </span>
                         </div>
                     </div>
     
                 </article> <!-- end article -->
+                {% endfor %}
 
-                <article class="masonry__brick entry format-quote" data-aos="fade-up">
-                        
-                    <div class="entry__thumb">
-                        <blockquote>
-                                <p>Good design is making something intelligible and memorable. Great design is making something memorable and meaningful.</p>
-    
-                                <cite>Dieter Rams</cite>
-                        </blockquote>
-                    </div>   
-    
-                </article> <!-- end article -->
+                <!-- <blockquote></blockquote> -->
+                
 
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-                        
-                    <div class="entry__thumb">
-                        <!-- single-standard.html -->
-                        <a href="#" class="entry__thumb-link">
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/tulips-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/tulips-400.jpg 1x, images/thumbs/masonry/tulips-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/tulips-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-standard.html -->
-                                <a href="#">December 15, 2017</a>
-                            </div>
-                            <!-- single-standard.html -->
-                            <h1 class="entry__title"><a href="#">10 Interesting Facts About Caffeine.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <!-- category.html -->
-                                <a href="#">Health</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <!-- single-standard.html -->
-                        <a href="#" class="entry__thumb-link">
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/cookies-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/cookies-400.jpg 1x, images/thumbs/masonry/cookies-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/cookies-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-standard.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-standard.html -->
-                            <h1 class="entry__title"><a href="#">No Sugar Oatmeal Cookies.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="#">Cooking</a>
-                                <!-- category.html -->
-                                <a href="#">Health</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <!-- single-standard.html -->
-                        <a href="#" class="entry__thumb-link">
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/wheel-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/wheel-400.jpg 1x, images/thumbs/masonry/wheel-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/wheel-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-standard.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-standard.html -->
-                            <h1 class="entry__title"><a href="#">Visiting Theme Parks Improves Your Health.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="#">Health</a> 
-                                <a href="#">Lifestyle</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-video" data-aos="fade-up">
-                        
-                    <div class="entry__thumb video-image">
-                        <a href="https://player.vimeo.com/video/117310401?color=01aef0&title=0&byline=0&portrait=0" data-lity>
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/shutterbug-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/shutterbug-400.jpg 1x, images/thumbs/masonry/shutterbug-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/shutterbug-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-video.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-video.html -->
-                            <h1 class="entry__title"><a href="#">Key Benefits Of Family Photography.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="#">Family</a> 
-                                <!-- category.html -->
-                                <a href="#">Photography</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
+                <!-- video-post -->
 
 
-                <article class="masonry__brick entry format-gallery" data-aos="fade-up">
-                        
-                    <div class="entry__thumb slider">
-                        <div class="slider__slides">
-                            <div class="slider__slide">
-                                <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/gallery/gallery-1-400.jpg' %}" 
-                                        srcset="images/thumbs/masonry/gallery/gallery-1-400.jpg 1x, images/thumbs/masonry/gallery/gallery-1-800.jpg 2x" alt="">  -->
-                                <img src="{% static 'ourBlog/images/thumbs/masonry/gallery/gallery-1-400.jpg' %}" alt="">
-                            </div>
-                            <div class="slider__slide">
-                                <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/gallery/gallery-2-400.jpg' %}" 
-                                        srcset="images/thumbs/masonry/gallery/gallery-2-400.jpg 1x, images/thumbs/masonry/gallery/gallery-2-800.jpg 2x" alt="">  -->
-                                <img src="{% static 'ourBlog/images/thumbs/masonry/gallery/gallery-2-400.jpg' %}" alt="">
-                            </div>
-                            <div class="slider__slide">
-                                <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/gallery/gallery-3-400.jpg' %}" 
-                                        srcset="images/thumbs/masonry/gallery/gallery-3-400.jpg 1x, images/thumbs/masonry/gallery/gallery-3-800.jpg 2x" alt="">   -->
-                                <img src="{% static 'ourBlog/images/thumbs/masonry/gallery/gallery-3-400.jpg' %}" alt="">
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-gallery.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-gallery.html -->
-                            <h1 class="entry__title"><a href="#">Workspace Design Trends and Ideas.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="#">Work</a> 
-                                <!-- category.html -->
-                                <a href="#">Management</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
+                <!-- slider-post -->
 
-                <article class="masonry__brick entry format-audio" data-aos="fade-up">
+                <!-- audio-post -->
 
-                    <div class="entry__thumb">
-                        <!-- single-audio.html -->
-                        <a href="#" class="entry__thumb-link">
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/guitarman-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/guitarman-400.jpg 1x, images/thumbs/masonry/guitarman-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/guitarman-400.jpg' %}" alt="">
-                        </a>
-                        <div class="audio-wrap">
-                            <audio id="player" src="{% static 'ourBlog/media/AirReview-Landmarks-02-ChasingCorporate.mp3' %}" width="100%" height="42" controls="controls"></audio>
-                        </div>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-audio.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-audio.html -->
-                            <h1 class="entry__title"><a href="#">What Your Music Preference Says About You and Your Personality.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="#">Music</a> 
-                                <!-- category.html -->
-                                <a href="#">Lifestyle</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-link" data-aos="fade-up">
-                    
-                    <div class="entry__thumb">
-                        <div class="link-wrap">
-                            <p>The Only Resource You Will Need To Start a Blog Using WordPress.</p>
-                            <cite>
-                                <a target="_blank" href="https://colorlib.com/">https://colorlib.com</a>
-                            </cite>
-                        </div>
-                    </div>
-                    
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <!-- single-standard.html -->
-                        <a href="#" class="entry__thumb-link">
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/jump-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/jump-400.jpg 1x, images/thumbs/masonry/jump-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/jump-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-standard.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-standard.html -->
-                            <h1 class="entry__title"><a href="#">Create Meaningful Family Moments.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="#">Family</a>
-                                <!-- category.html -->
-                                <a href="#">Relationship</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <!-- single-standard.html -->
-                        <a href="#" class="entry__thumb-link">
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/beetle-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/beetle-400.jpg 1x, images/thumbs/masonry/beetle-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/beetle-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-standard.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-standard.html -->
-                            <h1 class="entry__title"><a href="#">Throwback To The Good Old Days.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <!-- category.html -->
-                                <a href="#">Lifestyle</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <!-- single-standard.html -->
-                        <a href="#" class="entry__thumb-link">
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/fuji-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/fuji-400.jpg 1x, images/thumbs/masonry/fuji-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/fuji-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-standard.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-standard.html -->
-                            <h1 class="entry__title"><a href="#">Just Another  Standard Format Post.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="#">Design</a> 
-                                <!-- category.html -->
-                                <a href="#">Photography</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <!-- single-standard.html -->
-                        <a href="#" class="entry__thumb-link">
-                            <!-- <img src="{% static 'ourBlog/images/thumbs/masonry/sydney-400.jpg' %}" 
-                                    srcset="images/thumbs/masonry/sydney-400.jpg 1x, images/thumbs/masonry/sydney-800.jpg 2x" alt=""> -->
-                            <img src="{% static 'ourBlog/images/thumbs/masonry/sydney-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <!-- single-standard.html -->
-                                <a href="#">December 10, 2017</a>
-                            </div>
-                            <!-- single-standard.html -->
-                            <h1 class="entry__title"><a href="#">Planning Your First Trip to Sydney.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="#">Travel</a> 
-                                <!-- category.html -->
-                                <a href="#">Vacation</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
+                <!-- link post -->
+                
 
             </div> <!-- end masonry -->
         </div> <!-- end masonry-wrap -->
