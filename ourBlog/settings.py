@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'responsive_images',
     'posts',
+    # 'marketing',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
