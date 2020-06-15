@@ -10,4 +10,5 @@ urlpatterns = [
     # path('about/', views.about, name='about'),
     # path('contact/', views.contact, name='contact'),
     path('', include('posts.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

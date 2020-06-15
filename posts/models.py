@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 # from django_extensions.db.fields import AutoSlugField
 from autoslug import AutoSlugField
 from django.template.defaultfilters import slugify
+from tinymce import HTMLField
 # import random
 # import string
 
@@ -34,6 +35,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=150)
     body = models.TextField()
+    content = HTMLField('Content')
     timestamp = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     thumbnail = models.ImageField()
