@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% for result in queryset %}
+
+<h2>This is the results of your post</h2>
+<a href="{% url 'post_details' result.slug %}">
+    {{ result.title }}
+</a>
+{% endfor %}
+  
+{% endblock content %}
