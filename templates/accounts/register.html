@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        {% include "partials/_head.html" %}
+        <style>
+            .center-form {
+                text-align: center;
+                justify-content: center;
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="col-six tab-full" class="center-form">
+
+            <h3 class="add-bottom">Form Styles</h3>
+        
+            <form>
+                <div>
+                    <label for="sampleInput">Your email</label>
+                    <input class="full-width" type="email" placeholder="test@mailbox.com" id="sampleInput">
+                </div>
+                <div>
+                    <label for="sampleRecipientInput">Reason for contacting</label>
+                    <div class="cl-custom-select">
+                        <select class="full-width" id="sampleRecipientInput">
+                            <option value="Option 1">Questions</option>
+                            <option value="Option 2">Report</option>
+                            <option value="Option 3">Others</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <label for="exampleMessage">Message</label>
+                <textarea class="full-width" placeholder="Your message" id="exampleMessage"></textarea>
+        
+                <label class="add-bottom">
+                    <input type="checkbox">
+                    <span class="label-text">Send a copy to yourself</span>
+                </label>
+                
+                <input class="btn--primary full-width" type="submit" value="Submit">
+        
+            </form>
+        
+        </div>
+        
+        <!-- Java Script
+        ================================================== -->
+        <script src="{% static 'ourBlog/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'ourBlog/js/plugins.js' %}"></script>
+        <script src="{% static 'ourBlog/js/main.js' %}"></script>
+        <script src="{% static 'ourBlog/js/highlight.pack.js' %}"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>

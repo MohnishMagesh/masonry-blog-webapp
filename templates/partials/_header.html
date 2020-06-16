@@ -53,7 +53,13 @@
 
                     <ul class="header__nav">
                         <!-- index.html -->
-                        <li><a href="{% url 'index' %}" title="">Home</a></li>
+                        <li
+                        {% if 'index' in request.path %}
+                            class="current"
+                        {% else %}
+                                
+                        {% endif %}
+                        ><a href="{% url 'index' %}" title="">Home</a></li>
                         <li class="has-children">
                             <a href="#0" title="">Categories</a>
                             <ul class="sub-menu">
@@ -87,9 +93,25 @@
                         <!-- style-guide.html
                         <li><a href="#" title="">Styles</a></li> -->
                         <!-- about.html -->
-                        <li class="current"><a href="{% url 'about' %}" title="">About</a></li>
+                        <li
+                        {% if 'about' in request.path %}
+                            class="current"
+                        {% else %}
+                        
+                        {% endif %}
+                        ><a href="{% url 'about' %}" title="">About</a></li>
                         <!-- contact.html -->
-                        <li><a href="{% url 'contact' %}" title="">Contact</a></li>
+                        <li
+                        {% if 'contact' in request.path %}
+                            class="current"
+                        {% else %}
+                                
+                        {% endif %}
+                        >
+                            <a href="{% url 'contact' %}" title="">
+                                Contact
+                            </a>
+                        </li>
                     </ul> <!-- end header__nav -->
 
                     <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>

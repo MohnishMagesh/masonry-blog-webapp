@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'responsive_images',
     'posts',
+    'accounts',
     # 'marketing',
     'django_extensions',
     'tinymce',
