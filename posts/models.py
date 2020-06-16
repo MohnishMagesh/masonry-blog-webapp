@@ -42,6 +42,8 @@ class Post(models.Model):
     categories = models.ManyToManyField(Category)
     # slug = AutoSlugField(populate_from='title')
     slug = models.SlugField()
+    previous_post = models.ForeignKey('self', related_name='previous', on_delete=models.SET_NULL, blank=True, null=True)
+    next_post = models.ForeignKey('self', related_name='next', on_delete=models.SET_NULL, blank=True, null=True)
 
     # def save(self, *args, **kwargs):
     #     self.slug = slugify(self.title)

@@ -90,8 +90,11 @@
 
                 <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p> -->
 
-                <div>
-                    {{ post_content.content | safe }}
+                <div class="col-full s-content__main">
+                    <img src="{{ post_content.thumbnail.url }}" alt="">
+                    <p>
+                        {{ post_content.content | safe }}
+                    </p>
                 </div>
 
                 <p class="s-content__tags">
@@ -127,18 +130,22 @@
 
                 <div class="s-content__pagenav">
                     <div class="s-content__nav">
+                        {% if post_content.previous_post %}
                         <div class="s-content__prev">
-                            <a href="#0" rel="prev">
+                            <a href="{% url 'post_details' post_content.previous_post.slug %}" rel="prev">
                                 <span>Previous Post</span>
-                                Tips on Minimalist Design 
+                                {{ post_content.previous_post.title }}
                             </a>
                         </div>
+                        {% endif %}
+                        {% if post_content.next_post %}
                         <div class="s-content__next">
-                            <a href="#0" rel="next">
+                            <a href="{% url 'post_details' post_content.next_post.slug %}" rel="next">
                                 <span>Next Post</span>
-                                Less Is More 
+                                {{ post_content.next_post.title }} 
                             </a>
                         </div>
+                        {% endif %}
                     </div>
                 </div> <!-- end s-content__pagenav -->
 
