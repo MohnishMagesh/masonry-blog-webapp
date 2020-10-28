@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    # command: ./entrypoint.sh
+    # command: python manage.py runserver 0.0.0.0:8000
+    command:
+        - /bin/bash
+        - -c
+        - |
+          python manage.py migrate
+          python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+      - .db_data/db.sqlite3:/db.sqlite3
+    ports:
+      - "8000:8000"
