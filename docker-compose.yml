@@ -1,18 +1,41 @@
+# version: '3'
+
+# services:
+#   web:
+#     build: .
+#     # command: ./entrypoint.sh
+#     # command: python manage.py runserver 0.0.0.0:8000
+#     command:
+#         - /bin/bash
+#         - -c
+#         - |
+#           python manage.py migrate
+#           python manage.py runserver 0.0.0.0:8000
+#     volumes:
+#       - ./copy:/copy
+#       - .db_data/db.sqlite3:/db.sqlite3
+#     ports:
+#       - 8000:8000
+
 version: '3'
 
 services:
-  web:
-    build: .
-    # command: ./entrypoint.sh
-    # command: python manage.py runserver 0.0.0.0:8000
-    command:
-        - /bin/bash
-        - -c
-        - |
-          python manage.py migrate
-          python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./copy:/copy
-      - .db_data/db.sqlite3:/db.sqlite3
-    ports:
-      - 8000:8000
+
+    app:
+        build: ./src
+        restart: always
+        env_file:
+            - ./src/.env
+        ports:
+            - "8000:8000"
+        volumes:
+            - "./src/:/app/"
+            - .db_data/db.sqlite3:/db.sqlite3
+        command: bash -c "python manage.py migrate --no-input &&
+                                        python manage.py runserver 0.0.0.0:8000"
+
+    # db:
+    #     image: postgres:9.6
+    #     restart: always
+    #     volumes:
+    #         - "./volumes/db:/var/lib/postgresql/data"
